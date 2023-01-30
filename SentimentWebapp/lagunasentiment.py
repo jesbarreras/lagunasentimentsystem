@@ -22,11 +22,6 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import io
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import sys
-
-sys.path.insert(1, "C:/Users/Barre/AppData/Local/Programs/Python/Python311/Scripts/SentimentWebapp/streamlit_option_menu")
-
-
 
 st.set_page_config(layout="wide")
 
