@@ -295,7 +295,7 @@ def geographic():
         cate_options = st.selectbox("Category: ", category_option, 0)
 
 
-        lagunalocate = pd.read_csv('lagunasentimentsystem/SentimentWebapp/lagunaloc/lagunamap.csv')
+        lagunalocate = pd.read_csv('jesbarreras/lagunasentimentsystem/SentimentWebapp/lagunaloc/lagunamap.csv')
         lagunalocate = lagunalocate[['name', 'lat', 'long']]
 
        #tooltip=folium.Tooltip(location_info['name'], permanent=True)
@@ -315,19 +315,19 @@ def geographic():
             if pos['Analysis'].count() > 0 or neg['Analysis'].count() > 0 or  neu['Analysis'].count() > 0:
                 
                 if pos['Analysis'].count() > neg['Analysis'].count() and  pos['Analysis'].count() > neu['Analysis'].count():
-                    iconemote = folium.features.CustomIcon('lagunasentimentsystem/SentimentWebapp/images/happy.png', icon_size=(45,45))
+                    iconemote = folium.features.CustomIcon('jesbarreras/lagunasentimentsystem/SentimentWebapp/images/happy.png', icon_size=(45,45))
                     folium.Marker([location_info['lat'],location_info['long']], tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
         
                 elif neg['Analysis'].count() > pos['Analysis'].count() and  neg['Analysis'].count() > neu['Analysis'].count():
-                    iconemote = folium.features.CustomIcon('lagunasentimentsystem/SentimentWebapp/images/sad.png', icon_size=(45,45))
+                    iconemote = folium.features.CustomIcon('jesbarreras/lagunasentimentsystem/SentimentWebapp/images/sad.png', icon_size=(45,45))
                     folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
                 
                 else:
-                    iconemote = folium.features.CustomIcon('lagunasentimentsystem/SentimentWebapp/images/neutral.png', icon_size=(45,45))
+                    iconemote = folium.features.CustomIcon('jesbarreras/lagunasentimentsystem/SentimentWebapp/images/neutral.png', icon_size=(45,45))
                     folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
 
             else:
-                iconemote = folium.features.CustomIcon('lagunasentimentsystem/SentimentWebapp/images/na.png', icon_size=(45,45))
+                iconemote = folium.features.CustomIcon('jesbarreras/lagunasentimentsystem/SentimentWebapp/images/na.png', icon_size=(45,45))
                 folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']),icon=iconemote).add_to(lagunamap)
 
          #download as png folium map
@@ -366,7 +366,7 @@ def geographic():
     #legend
 
     st.write("Legend:")
-    legend = Image.open("lagunasentimentsystem/SentimentWebapp/images/legend.png")
+    legend = Image.open("jesbarreras/lagunasentimentsystem/SentimentWebapp/images/legend.png")
     legendresize = legend.resize((375,275))
     st.image(legendresize)
 
@@ -380,7 +380,7 @@ def wordcloud():
     
     stopwords = set(adv.stopwords['tagalog'])
     #wordlocud pic
-    maskpic = np.array(Image.open('lagunasentimentsystem/SentimentWebapp/images/facebooklogo.png'))
+    maskpic = np.array(Image.open('jesbarreras/lagunasentimentsystem/SentimentWebapp/images/facebooklogo.png'))
 
     cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
 
