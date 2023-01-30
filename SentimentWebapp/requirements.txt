@@ -101,6 +101,7 @@ Pympler==1.0.1
 pyOpenSSL==23.0.0
 pyparsing==3.0.9
 PyPrind==2.11.3
+pyproject-toml-0.0.10
 pyproj==3.4.1
 pyrsistent==0.19.2
 pyshp==2.3.1
