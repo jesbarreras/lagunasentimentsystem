@@ -366,7 +366,7 @@ def geographic():
     #legend
 
     st.write("Legend:")
-    legend = Image.open("/images/legend.png")
+    legend = Image.open("images/legend.png")
     legendresize = legend.resize((375,275))
     st.image(legendresize)
 
