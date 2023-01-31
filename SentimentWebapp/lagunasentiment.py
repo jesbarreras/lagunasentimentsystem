@@ -392,7 +392,7 @@ def geographic():
 
     #legend
 
-    st.markdown("<p style ='text-align: center; font-size: 22px'>Legend:</p>")
+    st.markdown("<p style ='text-align: center; font-size: 22px'>Legend:</p>",  unsafe_allow_html=True)
     legend = Image.open("SentimentWebapp/images/legend.png")
     legendresize = legend.resize((375,275))
     st.image(legendresize)
