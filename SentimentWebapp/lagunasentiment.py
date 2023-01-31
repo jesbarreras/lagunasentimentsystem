@@ -358,16 +358,16 @@ def geographic():
                 folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']),icon=iconemote).add_to(lagunamap)
 
          #download as png folium map
-        img_data = lagunamap._to_png(2)
+        #img_data = lagunamap._to_png(2)
     #img = Image.open(io.BytesIO(img_data))
         #img.save('lagunegeovisual.png')
      
-        st.download_button(
-            label="Download as png",
-            data= img_data,
-            file_name= cate_options+'_lagunageovisual.png',
-            mime='image/png',
-         )
+        #st.download_button(
+         #   label="Download as png",
+          #  data= img_data,
+           # file_name= cate_options+'_lagunageovisual.png',
+            #mime='image/png',
+         #)
     
 
             
