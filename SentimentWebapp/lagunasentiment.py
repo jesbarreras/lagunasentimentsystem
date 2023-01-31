@@ -62,7 +62,34 @@ def main():
 #home page
 
 def homepage():
-    st.write("asasa")
+    
+    st.markdown("<h1 style ='text-align: center;'>Welcome to Laguna Sentiment Analyzer Web Application</h1>", unsafe_allow_html=True) #title center
+    st.text("")
+    st.text("")
+    st.text("")
+    
+#centering logo
+    lagunalogo = Image.open("SentimentWebapp/images/lagunalogo.png")
+    logoresize = lagunalogo.resize((675,675))
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.text("")
+    with col2:
+        st.image(logoresize)
+    with col3:
+        st.text("")
+   
+
+
+    st.text("")
+    st.text("")
+#centering text
+    st.markdown("<p style ='text-align: center; font-size: 22px'>This web application is a sentiment analysis tools that essentially to detect and understand the feelings of their citizen per municipalities.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 22px'>This tools generate insights into how the LGU (Local Government Units) can enhance or improve the experiences and services of their citizens.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 22px'>The web app includes those functionalities such as sentiment analysis, data visualitzation, geo-graphic visualization and wordcloud.</p>", unsafe_allow_html=True)
+    
+    
     
 
 #sentiment scores
@@ -380,7 +407,7 @@ def wordcloud():
     
     stopwords = set(adv.stopwords['tagalog'])
     #wordlocud pic
-    maskpic = np.array(Image.open('SentimentWebapp/images/facebooklogo.png'))
+    maskpic = np.array(Image.open('SentimentWebapp/images/thumbs.png'))
 
     cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
 
