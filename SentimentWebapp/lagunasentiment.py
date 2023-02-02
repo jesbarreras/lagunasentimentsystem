@@ -132,7 +132,7 @@ def texttranslate():
             st.error("Please make it sure your column name in your csv file is the same")
             
         else:
-            dataframe_append = dataframe_append.append(df, ignore_index=True)        
+            dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)        
             dataframe_append['Translations'] = dataframe_append['Comments'].apply(translator.translate, src='tl', dest='en').apply(getattr, args=('text',)) 
         
        
@@ -178,7 +178,7 @@ def textanalysis():
              st.error("Please make it sure your column name in your csv file is the same")
              
          else:
-             dataframe_append = dataframe_append.append(df, ignore_index=True)
+             dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
          
          #del['Unnamed: 0']
              dataframe_append['Scores'] = dataframe_append['Translations'].apply(score)
@@ -230,7 +230,7 @@ def datavisual():
          if all(i for i in colsname if i not in cols):
              st.error("Please make it sure your column name in your csv file is the same")
          else:
-             dataframe_append = dataframe_append.append(df, ignore_index=True)
+             dataframe_append =  pd.concat([dataframe_append, df], ignore_index=True)
          
 
 #checking is file not empty before display it
@@ -307,7 +307,7 @@ def geographic():
         if all(i for i in colsname if i not in cols):
             st.error("Please make it sure your column name in your csv file is the same")
         else:
-            dataframe_append = dataframe_append.append(df, aignore_index=True)
+            dataframe_append =  pd.concat([dataframe_append, df], ignore_index=True)
     
 
 #checking is file not empty before display it
@@ -426,7 +426,7 @@ def wordcloud():
         if all(i for i in colsname if i not in cols):
             st.error("Please make it sure your column name in your csv file is the same")
         else:
-            dataframe_append = dataframe_append.append(df, ignore_index=True)
+            dataframe_append =  pd.concat([dataframe_append, df], ignore_index=True)
     
 
         
