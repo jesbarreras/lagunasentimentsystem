@@ -261,7 +261,7 @@ def datavisual():
          sentvalues = [pos['Analysis'].count(), neg['Analysis'].count(), neu['Analysis'].count()]
 
          fig = go.Figure(data=[go.Pie(labels=Labels, values = sentvalues)])
-         fig.update_layout(title=options + ' Covid-19 Responsed Sentiment Analysis' +"\t\t"+"(" + cate_options +")")
+         fig.update_layout(title=options + ' Covid-19 Responsed Sentiment Analysis' +"\t\t"+"(" Category: + cate_options +")")
          st.plotly_chart(fig)
 
         #bar chart
@@ -272,7 +272,7 @@ def datavisual():
         
          dataframe_append = dataframe_append.loc[(dataframe_append['Category']==cate_options)]
          
-         figbar = px.histogram(dataframe_append,x='Municipalities', color='Analysis', title = "Laguna Covid-19 Responsed Sentiment Analysis"+"\t\t"+"("+cate_options+")" , text_auto=True,  barmode="group", color_discrete_sequence=["#C0EEE4","#F8F988", "#FFCAC8"] )
+         figbar = px.histogram(dataframe_append,x='Municipalities', color='Analysis', title = "Laguna Covid-19 Responsed Sentiment Analysis"+"\t\t"+"("Category: +cate_options+")" , text_auto=True,  barmode="group", color_discrete_sequence=["#C0EEE4","#F8F988", "#FFCAC8"] )
              
          st.plotly_chart(figbar)
                    
