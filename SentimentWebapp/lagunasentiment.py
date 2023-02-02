@@ -85,9 +85,9 @@ def homepage():
     st.text("")
     st.text("")
 #centering text
-    st.markdown("<p style ='text-align: center; font-size: 22px'>This web application is a sentiment analysis tools that essentially to detect and understand the feelings of their citizen per municipalities.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; font-size: 22px'>This tools generate insights into how the LGU (Local Government Units) can enhance or improve the experiences and services of their citizens.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; font-size: 22px'>The web app includes those functionalities such as sentiment analysis, data visualitzation, geo-graphic visualization and wordcloud.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 22px'>This web application is a sentiment analysis tool that is used to detect and understand the feelings of their citizen from different municipalities of Laguna..</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 22px'>It can generate insights so the LGU (Local Government Units) can improve the experiences and services for their citizens..</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 22px'>The web application includes functionalities such as Sentiment Analysis, Data Visualization, Geo-Graphic Visualization and Word Cloud for converting a large amount of data into an easy to understand visible information .</p>", unsafe_allow_html=True)
     
     
     
