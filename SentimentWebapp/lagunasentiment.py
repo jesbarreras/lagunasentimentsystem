@@ -272,7 +272,7 @@ def datavisual():
         
          dataframe_append = dataframe_append.loc[(dataframe_append['Category']==cate_options)]
          
-         figbar = px.histogram(dataframe_append,x='Municipalities', color='Analysis', title = "Laguna Covid-19 Responsed Sentiment Analysis"+"\t\t"+"("+cate_options+")" , text_auto=True,  barmode="group", color_discrete_sequence=["C0EEE4","F8F988", "FFCAC8"] )
+         figbar = px.histogram(dataframe_append,x='Municipalities', color='Analysis', title = "Laguna Covid-19 Responsed Sentiment Analysis"+"\t\t"+"("+cate_options+")" , text_auto=True,  barmode="group", color_discrete_sequence=["cyan4","lemonchiffon1", "lightblue2"] )
              
          st.plotly_chart(figbar)
                    
