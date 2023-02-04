@@ -124,11 +124,11 @@ def texttranslate():
         file.seek(0)
         df = pd.read_csv(file)
 
-        colsname = df.axes[0] #headername/column names
+        colsname = df.axes[1] #headername/column names
 
 #validating if the file has the same column
         
-        if all(i for i in colsname if i not in cols):
+        if any(i for i in colsname if i not in cols):
             st.error("Please make it sure your column name in your csv file is the same")
             
         else:
@@ -170,11 +170,11 @@ def textanalysis():
          df = pd.read_csv(file)
 
             
-         colsname = df.axes[0] #headername/column names
+         colsname = df.axes[1] #headername/column names
          
 #validating if the file has the same column
         
-         if all(i for i in colsname if i not in cols):
+         if any(i for i in colsname if i not in cols):
              st.error("Please make it sure your column name in your csv file is the same")
              
          else:
@@ -223,11 +223,11 @@ def datavisual():
          file.seek(0)
          df = pd.read_csv(file)
 
-         colsname = df.axes[0] #headername/column names
+         colsname = df.axes[1] #headername/column names
          
 #validating if the file has the same column
         
-         if all(i for i in colsname if i not in cols):
+         if any(i for i in colsname if i not in cols):
              st.error("Please make it sure your column name in your csv file is the same")
          else:
              dataframe_append =  pd.concat([dataframe_append, df], ignore_index=True)
@@ -300,11 +300,11 @@ def geographic():
         file.seek(0)
         df = pd.read_csv(file)
 
-        colsname = df.axes[0] #headername/column names
+        colsname = df.axes[1] #headername/column names
          
 #validating if the file has the same column
         
-        if all(i for i in colsname if i not in cols):
+        if any(i for i in colsname if i not in cols):
             st.error("Please make it sure your column name in your csv file is the same")
         else:
             dataframe_append =  pd.concat([dataframe_append, df], ignore_index=True)
@@ -419,11 +419,11 @@ def wordcloud():
         file.seek(0)
         df = pd.read_csv(file)
 
-        colsname = df.axes[0] #headername/column names
+        colsname = df.axes[1] #headername/column names
          
 #validating if the file has the same column
         
-        if all(i for i in colsname if i not in cols):
+        if any(i for i in colsname if i not in cols):
             st.error("Please make it sure your column name in your csv file is the same")
         else:
             dataframe_append =  pd.concat([dataframe_append, df], ignore_index=True)
