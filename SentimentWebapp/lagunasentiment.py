@@ -146,7 +146,7 @@ def homepage():
     
     col11, col12 = st.columns(2)
     with col11:
-         st.markdown("<p style ='text-align: justify; font-size: 22px'>Geovisualization or “WordCloud”</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 22px'>“WordCloud”</p>", unsafe_allow_html=True)
          st.markdown("<p style ='text-align: justify; font-size: 16px'>A word cloud is a data visualization technique that shows the most used words in large font and the least used words in small font.</p>", unsafe_allow_html=True)
          st.markdown("<p style ='text-align: justify; font-size: 16px'>It helps to get an idea about your text data, especially when working on problems based on natural language processing.</p>", unsafe_allow_html=True)
     with col12:
