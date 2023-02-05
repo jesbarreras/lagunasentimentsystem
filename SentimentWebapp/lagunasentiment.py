@@ -130,11 +130,11 @@ def homepage():
     st.text("")
     
     col9, col10 = st.columns(2)
-    with col1:
+    with col9:
          st.markdown("<p style ='text-align: justify; font-size: 22px'>Geovisualization or “Geographic Visualization”</p>", unsafe_allow_html=True)
          st.markdown("<p style ='text-align: justify; font-size: 16px'>Geovisualization or “Geographic Visualization”</p>", unsafe_allow_html=True)
          st.markdown("<p style ='text-align: justify; font-size: 16px'>concerns the visual representations of geospatial data and the use of cartographic techniques to support visual analytics.</p>", unsafe_allow_html=True)
-    with col2:
+    with col10:
         geo = Image.open("SentimentWebapp/images/geovisual.png")
         geologo = geo.resize((375,375))
         st.image(geologo)
