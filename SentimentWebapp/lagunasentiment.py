@@ -96,6 +96,12 @@ def homepage():
     
     st.text("")
     st.text("")
+    st.text("")
+    st.text("")
+    st.text("")
+    st.text("")
+    st.text("")
+    st.text("")
     
     
     col5, col6 = st.columns(2)
@@ -139,7 +145,7 @@ def homepage():
         geologo = geo.resize((375,375))
         st.image(geologo)
         
-      #geovisual short description    
+      #wordcloud short description    
         
     st.text("")
     st.text("")
