@@ -99,12 +99,13 @@ def homepage():
     
     
     col5, col6 = st.columns(2)
-    st.text("Sentiment Analysis: ")
     with col5:
+         st.text("Sentiment Analysis: ")
          st.markdown("<p style ='text-align: justify; font-size: 22px'>Sentiment analysis (or opinion mining) is a natural language processing (NLP) technique used to determine whether data is positive, negative or neutral.</p>", unsafe_allow_html=True)
     with col6:
-        data = Image.open("SentimentWebapp/images/sentiment.jpeg")
-        logoresize = lagunalogo.resize((675,675))
+        senti = Image.open("SentimentWebapp/images/sentiment.jpeg")
+        resize = senti.resize((675,675))
+        st.image(resize)
         
     #datavisual short description    
         
@@ -112,15 +113,16 @@ def homepage():
     st.text("")
     
     col7, col8 = st.columns(2)
-    st.text("Data Visualization: ")
     with col7:
+         st.text("Data Visualization: ")
          st.markdown("<p style ='text-align: justify; font-size: 22px'>Data visualization is the graphical representation of different pieces of information or data, using visual elements such as charts, graphs, or maps.</p>", unsafe_allow_html=True) 
          st.markdown("<p style ='text-align: justify; font-size: 22px'>Data visualization tools provide the ability to see and understand data trends, outliers, and patterns in an easy, intuitive way.</p>", unsafe_allow_html=True)
      
     with col8:
-        data = Image.open("SentimentWebapp/images/datavisual.png")
-        logoresize = lagunalogo.resize((675,675))
-        
+        dataimage = Image.open("SentimentWebapp/images/datavisual.png")
+        resize = dataimage.resize((675,675))
+        st.image(resize)
+       
         
     #geovisual short description    
         
@@ -128,13 +130,15 @@ def homepage():
     st.text("")
     
     col9, col10 = st.columns(2)
-    st.text("Data Visualization: ")
     with col1:
+         st.text("Data Visualization: ")
          st.markdown("<p style ='text-align: justify; font-size: 22px'>Geovisualization or “Geographic Visualization”</p>", unsafe_allow_html=True)
          st.markdown("<p style ='text-align: justify; font-size: 22px'>concerns the visual representations of geospatial data and the use of cartographic techniques to support visual analytics.</p>", unsafe_allow_html=True)
     with col2:
-        data = Image.open("SentimentWebapp/images/geovisual.png")
-        logoresize = lagunalogo.resize((675,675))
+        geo = Image.open("SentimentWebapp/images/geovisual.png")
+        geologo = lgeo.resize((675,675))
+        st.image(geologo)
+        
         
     
     
