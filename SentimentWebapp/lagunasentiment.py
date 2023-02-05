@@ -23,6 +23,8 @@ import io
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+
+
 st.set_page_config(layout="wide")
 
 global dataframe_append #dataframe global variable
@@ -56,7 +58,8 @@ def main():
     if(selected=="Laguna Geo-Graphic Visualization"):
             geographic()
     if(selected=="Word Cloud"):
-            wordcloud()  
+            wordcloud()
+
         
 
 #home page
@@ -69,7 +72,7 @@ def homepage():
     st.text("")
     
 #centering logo
-    lagunalogo = Image.open("SentimentWebapp/images/lagunalogo.png")
+    lagunalogo = Image.open("images/lagunalogo.png")
     logoresize = lagunalogo.resize((675,675))
     
     col1, col2, col3 = st.columns(3)
@@ -85,9 +88,9 @@ def homepage():
     st.text("")
     st.text("")
 #centering text
-    st.markdown("<p style ='text-align: center; font-size: 22px'>This web application is a sentiment analysis tool that is used to detect and understand the feelings of their citizen from different municipalities of Laguna..</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; font-size: 22px'>It can generate insights so the LGU (Local Government Units) can improve the experiences and services for their citizens..</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; font-size: 22px'>The web application includes functionalities such as Sentiment Analysis, Data Visualization, Geo-Graphic Visualization and Word Cloud for converting a large amount of data into an easy to understand visible information .</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 22px'>This web application is a sentiment analysis tools that essentially to detect and understand the feelings of their citizen per municipalities.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 22px'>This tools generate insights into how the LGU (Local Government Units) can enhance or improve the experiences and services of their citizens.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 22px'>The web app includes those functionalities such as sentiment analysis, data visualitzation, geo-graphic visualization and wordcloud.</p>", unsafe_allow_html=True)
     
     
     
@@ -225,57 +228,66 @@ def datavisual():
 
          colsname = df.axes[1] #headername/column names
          
+         
+         
 #validating if the file has the same column
         
          if any(i for i in colsname if i not in cols):
              st.error("Please make it sure your column name in your csv file is the same")
+               
          else:
-             dataframe_append =  pd.concat([dataframe_append, df], ignore_index=True)
+             dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
          
 
 #checking is file not empty before display it
      if dataframe_append.empty == False:
          st.write(dataframe_append)
 
+         try:
 
-         st.write("Pie Chart")
+             st.write("Pie Chart")
 
-         muni_option  = dataframe_append['Municipalities'].unique().tolist()
-         options = st.selectbox("Municipalities: ", muni_option, 0)
+             muni_option  = dataframe_append['Municipalities'].unique().tolist()
+             options = st.selectbox("Municipalities: ", muni_option, 0)
 
-         category_option  = dataframe_append['Category'].unique().tolist()
-         cate_options = st.selectbox("Category: ", category_option, 0)
+             category_option  = dataframe_append['Category'].unique().tolist()
+             cate_options = st.selectbox("Category: ", category_option, 0)
         
         
         
-         pos = dataframe_append.loc[(dataframe_append['Analysis']== "Positive") & (dataframe_append['Category']==cate_options) & (dataframe_append['Municipalities']==options)  ]
-         neg = dataframe_append.loc[(dataframe_append['Analysis']== "Negative")  & (dataframe_append['Category']==cate_options) & (dataframe_append['Municipalities']==options)]
-         neu = dataframe_append.loc[(dataframe_append['Analysis']== "Neutral") & (dataframe_append['Category']==cate_options) & (dataframe_append['Municipalities']==options)]
+             pos = dataframe_append.loc[(dataframe_append['Analysis']== "Positive") & (dataframe_append['Category']==cate_options) & (dataframe_append['Municipalities']==options)  ]
+             neg = dataframe_append.loc[(dataframe_append['Analysis']== "Negative")  & (dataframe_append['Category']==cate_options) & (dataframe_append['Municipalities']==options)]
+             neu = dataframe_append.loc[(dataframe_append['Analysis']== "Neutral") & (dataframe_append['Category']==cate_options) & (dataframe_append['Municipalities']==options)]
        
            
 #chart
         #pie chart
               
 
-         Labels = ['Positive', 'Negative', 'Neutral'] 
-         sentvalues = [pos['Analysis'].count(), neg['Analysis'].count(), neu['Analysis'].count()]
+             Labels = ['Positive', 'Negative', 'Neutral'] 
+             sentvalues = [pos['Analysis'].count(), neg['Analysis'].count(), neu['Analysis'].count()]
 
-         fig = go.Figure(data=[go.Pie(labels=Labels, values = sentvalues)])
-         fig.update_layout(title=options + ' Covid-19 Responsed Sentiment Analysis' +"\t\t"+"(Category : "+ cate_options +")")
-         st.plotly_chart(fig)
+             fig = go.Figure(data=[go.Pie(labels=Labels, values = sentvalues)])
+             fig.update_layout(title=options + ' Covid-19 Responsed Sentiment Analysis' +"\t\t"+"(Category: " + cate_options +")")
+             st.plotly_chart(fig)
 
         #bar chart
               
-         st.write("Bar Chart")
+             st.write("Bar Chart")
         
          
         
-         dataframe_append = dataframe_append.loc[(dataframe_append['Category']==cate_options)]
+             dataframe_append = dataframe_append.loc[(dataframe_append['Category']==cate_options)]
          
-         figbar = px.histogram(dataframe_append,x='Municipalities', color='Analysis', title = "Laguna Covid-19 Responsed Sentiment Analysis"+"\t\t"+"(Category: "+cate_options+")" , text_auto=True,  barmode="group", color_discrete_sequence=["#C0EEE4","#F8F988", "#FFCAC8"] )
+             figbar = px.histogram(dataframe_append,x='Municipalities', color='Analysis', title = "Laguna Covid-19 Responsed Sentiment Analysis"+"\t\t"+"(Category: "+cate_options+")" , text_auto=True,  barmode="group", color_discrete_sequence=["#C0EEE4","#F8F988", "#FFCAC8"] )
              
-         st.plotly_chart(figbar)
-                   
+             st.plotly_chart(figbar)
+
+
+         except:
+             st.error("Make it sure all the rows values from Municipalities , Comments, Category and Translations is not blank or NaN! Please check your uploaded file carefully")    
+                             
+                       
      
 #geo-graphic visual
 
@@ -300,14 +312,14 @@ def geographic():
         file.seek(0)
         df = pd.read_csv(file)
 
-        colsname = df.axes[1] #headername/column names
+        colsname = df.axes[0] #headername/column names
          
 #validating if the file has the same column
         
-        if any(i for i in colsname if i not in cols):
+        if all(i for i in colsname if i not in cols):
             st.error("Please make it sure your column name in your csv file is the same")
         else:
-            dataframe_append =  pd.concat([dataframe_append, df], ignore_index=True)
+            dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
     
 
 #checking is file not empty before display it
@@ -322,7 +334,7 @@ def geographic():
         cate_options = st.selectbox("Category: ", category_option, 0)
 
 
-        lagunalocate = pd.read_csv('SentimentWebapp/lagunaloc/lagunamap.csv')
+        lagunalocate = pd.read_csv('lagunaloc/lagunamap.csv')
         lagunalocate = lagunalocate[['name', 'lat', 'long']]
 
        #tooltip=folium.Tooltip(location_info['name'], permanent=True)
@@ -342,19 +354,19 @@ def geographic():
             if pos['Analysis'].count() > 0 or neg['Analysis'].count() > 0 or  neu['Analysis'].count() > 0:
                 
                 if pos['Analysis'].count() > neg['Analysis'].count() and  pos['Analysis'].count() > neu['Analysis'].count():
-                    iconemote = folium.features.CustomIcon('SentimentWebapp/images/happy.png', icon_size=(45,45))
+                    iconemote = folium.features.CustomIcon('images/happy.png', icon_size=(45,45))
                     folium.Marker([location_info['lat'],location_info['long']], tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
         
                 elif neg['Analysis'].count() > pos['Analysis'].count() and  neg['Analysis'].count() > neu['Analysis'].count():
-                    iconemote = folium.features.CustomIcon('SentimentWebapp/images/sad.png', icon_size=(45,45))
+                    iconemote = folium.features.CustomIcon('images/sad.png', icon_size=(45,45))
                     folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
                 
                 else:
-                    iconemote = folium.features.CustomIcon('SentimentWebapp/images/neutral.png', icon_size=(45,45))
+                    iconemote = folium.features.CustomIcon('images/neutral.png', icon_size=(45,45))
                     folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
 
             else:
-                iconemote = folium.features.CustomIcon('SentimentWebapp/images/na.png', icon_size=(45,45))
+                iconemote = folium.features.CustomIcon('images/na.png', icon_size=(45,45))
                 folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']),icon=iconemote).add_to(lagunamap)
 
          #download as png folium map
@@ -392,8 +404,8 @@ def geographic():
 
     #legend
 
-    st.markdown("<p style ='text-align: justify; font-size: 22px'>Legend:</p>",  unsafe_allow_html=True)
-    legend = Image.open("SentimentWebapp/images/legend.png")
+    st.write("Legend:")
+    legend = Image.open("images/legend.png")
     legendresize = legend.resize((375,275))
     st.image(legendresize)
 
@@ -407,7 +419,9 @@ def wordcloud():
     
     stopwords = set(adv.stopwords['tagalog'])
     #wordlocud pic
-    maskpic = np.array(Image.open('SentimentWebapp/images/thumbs.png'))
+    
+    maskpic = np.array(Image.open('images/thumbs.png'))
+
 
     cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
 
@@ -419,17 +433,15 @@ def wordcloud():
         file.seek(0)
         df = pd.read_csv(file)
 
-        colsname = df.axes[1] #headername/column names
+        colsname = df.axes[0] #headername/column names
          
 #validating if the file has the same column
         
-        if any(i for i in colsname if i not in cols):
+        if all(i for i in colsname if i not in cols):
             st.error("Please make it sure your column name in your csv file is the same")
         else:
-            dataframe_append =  pd.concat([dataframe_append, df], ignore_index=True)
-    
-
-        
+          dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
+         
     
 
 #checking is file not empty before display it
@@ -439,19 +451,22 @@ def wordcloud():
 
 
 #options positive negative neutral
-        category_option3  = dataframe_append['Analysis'].unique().tolist()
-        cate_options3 = st.selectbox("Category: ", category_option3, 0)
+        category_option  = dataframe_append['Analysis'].unique().tolist()
+        cate_options = st.selectbox("Category: ", category_option, 0)
         
-        words = dataframe_append.loc[(dataframe_append['Analysis'])==cate_options3]
+        words = dataframe_append.loc[(dataframe_append['Analysis'])==cate_options]
+        
             
 
 #displaying those comment into wordcloud
         st.set_option('deprecation.showPyplotGlobalUse', False)
-        wordcloud_text = WordCloud(stopwords = stopwords, width=1200, height=600, mask=maskpic, background_color="black").generate(''.join(str(words['Comments'].values)))
+        wordcloud_text = WordCloud(stopwords = stopwords, max_words=6000, contour_color='steelblue', random_state=1, width=900, height=600, collocations=False,mask=maskpic, background_color="black")
+        wordcloud_text.generate(''.join(str(words['Comments'].values)))
         plt.figure(figsize=(20,10),facecolor='k')
         plt.imshow(wordcloud_text,interpolation='bilinear')
         plt.axis('off')
         plt.tight_layout (pad=0)
+        #plt.savefig("cloud.png", format="png")
         st.pyplot()
 
 
