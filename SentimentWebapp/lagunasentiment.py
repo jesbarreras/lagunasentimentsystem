@@ -103,7 +103,7 @@ def homepage():
          st.text("Sentiment Analysis: ")
          st.markdown("<p style ='text-align: justify; font-size: 22px'>Sentiment analysis (or opinion mining) is a natural language processing (NLP) technique used to determine whether data is positive, negative or neutral.</p>", unsafe_allow_html=True)
     with col6:
-        senti = Image.open("SentimentWebapp/images/sentiment.jpeg")
+        senti = Image.open("SentimentWebapp/images/sentiment.jpg")
         resize = senti.resize((675,675))
         st.image(resize)
         
