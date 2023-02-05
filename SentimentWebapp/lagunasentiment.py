@@ -120,7 +120,7 @@ def homepage():
     
     col7, col8 = st.columns(2)
     with col7:
-         st.markdown("<p style ='text-align: justify; font-size: 22px'>Geographic Visualization</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 22px'>Data Visualization</p>", unsafe_allow_html=True)
          st.markdown("<p style ='text-align: justify; font-size: 16px'>Data visualization is the graphical representation of different pieces of information or data, using visual elements such as charts, graphs, or maps.</p>", unsafe_allow_html=True) 
          st.markdown("<p style ='text-align: justify; font-size: 16px'>Data visualization tools provide the ability to see and understand data trends, outliers, and patterns in an easy, intuitive way.</p>", unsafe_allow_html=True)
      
