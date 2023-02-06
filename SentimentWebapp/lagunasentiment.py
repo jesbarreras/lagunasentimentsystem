@@ -369,6 +369,11 @@ def geographic():
 #OpenStreetMap lagunamap
     lagunamap = folium.Map(location = [14.2888,121.2892], zoom_start = 11)
     folium.TileLayer('OpenStreetMap').add_to(lagunamap)
+    
+    data_url = ("https://services2.arcgis.com/tSnASI82HlH3SIKB/arcgis/rest/services/COVID19_11_July_2020/FeatureServer")
+    lagunalayer = f"{data_url}/COVID19_11_July_2020.json"
+    
+    folium.GeoJson(lagunalayermap).add_to(lagunmap)
    
 
 #uploadfile
