@@ -372,7 +372,8 @@ def geographic():
     
 
     
-    folium.GeoJson("SentimentWebapp/shapefilemap/Laguna-Maps(1).json").add_to(lagunamap)
+    layer = folium.GeoJson("SentimentWebapp/shapefilemap/Laguna-Maps(1).json").add_to(lagunamap)
+    lagunamap.fit_bounds(layer.get_bounds())
    
 
 #uploadfile
