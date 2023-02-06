@@ -372,7 +372,7 @@ def geographic():
     
 
     
-    folium.GeoJson("SentimentWebapp/shapefilemap/Laguna-Maps(1).json").add_to(lagunmap)
+    folium.GeoJson("SentimentWebapp/shapefilemap/Laguna-Maps(1).json").add_to(lagunamap)
    
 
 #uploadfile
