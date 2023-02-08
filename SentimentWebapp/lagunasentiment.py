@@ -248,10 +248,9 @@ def textanalysis():
 #validating if the file has the same column
         
          if any(i for i in colsname if i not in cols):
-             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category, Translations)")
-                
-         elif df['Translations'].isnull().values.any():
-              st.error("Please make it sure your csv file is already translated!")
+             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
+             st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
+      
          else:
              dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
          
@@ -305,7 +304,8 @@ def datavisual():
 #validating if the file has the same column
         
          if any(i for i in colsname if i not in cols):
-             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category, Translations)")
+             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
+             st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
                 
          elif df['Scores'].isnull().values.any() and  df['Scores'].isnull().values.any() :
               st.error("Analyze first the csv file!")
@@ -392,7 +392,8 @@ def geographic():
 #validating if the file has the same column
         
         if any(i for i in colsname if i not in cols):
-             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category, Translations)")
+            st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
+            st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
                 
         elif df['Scores'].isnull().values.any() and  df['Scores'].isnull().values.any() :
               st.error("Analyze first the csv file!")
@@ -516,7 +517,8 @@ def wordcloud():
 #validating if the file has the same column
         
         if any(i for i in colsname if i not in cols):
-             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category, Translations)")
+             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
+             st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
                 
         elif df['Scores'].isnull().values.any() and  df['Scores'].isnull().values.any() :
               st.error("Analyze first the csv file!")
