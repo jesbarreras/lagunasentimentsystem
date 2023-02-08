@@ -398,7 +398,7 @@ def geographic():
         if any(i for i in colsname if i not in cols):
             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
             st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
-       elif df['Scores'].isnull().values.any() and  df['Analysis'].isnull().values.any() :
+        elif df['Scores'].isnull().values.any() and  df['Analysis'].isnull().values.any() :
              st.error("Analyze first the csv file!")
         else:
             dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
