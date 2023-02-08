@@ -233,54 +233,58 @@ def texttranslate():
              
 def textanalysis():
     
-     st.title(f"Sentiment Analyzer")
-     dataframe_append = pd.DataFrame()
-     cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
+    try:
+        st.title(f"Sentiment Analyzer")
+        dataframe_append = pd.DataFrame()
+        cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
      
-     multiple_files = st.file_uploader('Analyze CSV',type="csv", accept_multiple_files=True)
-     for file in multiple_files:
-         file.seek(0)
-         df = pd.read_csv(file)
+        multiple_files = st.file_uploader('Analyze CSV',type="csv", accept_multiple_files=True)
+        for file in multiple_files:
+            file.seek(0)
+            df = pd.read_csv(file)
 
             
-         colsname = df.axes[1] #headername/column names
+            colsname = df.axes[1] #headername/column names
          
 #validating if the file has the same column
         
-         if any(i for i in colsname if i not in cols):
-             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
-             st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
+            if any(i for i in colsname if i not in cols):
+                st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
+                st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
       
-         else:
-             dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
+            else:
+                dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
          
          #del['Unnamed: 0']
-             dataframe_append['Scores'] = dataframe_append['Translations'].apply(score)
-             dataframe_append['Analysis'] = dataframe_append['Scores'].apply(analyze)
+                dataframe_append['Scores'] = dataframe_append['Translations'].apply(score)
+                dataframe_append['Analysis'] = dataframe_append['Scores'].apply(analyze)
 
          
 
          #checking is file not empty before display it
-     if dataframe_append.empty == False:
-         
+        if dataframe_append.empty == False:
 
-         @st.cache
+            @st.cache
         #coverting the data
          
-         def convert_df(dataframe_append):
+            def convert_df(dataframe_append):
              #IMPORTANT: Cache the conversion to prevent computation on every rerun
-             return dataframe_append.to_csv(index=False).encode('utf-8')
+                return dataframe_append.to_csv(index=False).encode('utf-8')
             
-         st.write(dataframe_append)  
+            st.write(dataframe_append)  
 
          #download the data
-         csv = convert_df(dataframe_append)
-         st.download_button(
-             label="Download data as CSV",
-             data=csv,
-             file_name='sentiment.csv',
-             mime='text/csv',
-             )
+            csv = convert_df(dataframe_append)
+            st.download_button(
+                label="Download data as CSV",
+                data=csv,
+                file_name='sentiment.csv',
+                mime='text/csv',
+               )
+    except:
+        st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
+        st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
+   
          
                      
              
