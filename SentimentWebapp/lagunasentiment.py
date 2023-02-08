@@ -307,7 +307,7 @@ def datavisual():
          
 #validating if the file has the same column
         
-         if any(i for i in colsname if i not in cols):
+         if any(i for i in cols if i not in colsname):
              st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
              st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
                 
@@ -395,7 +395,7 @@ def geographic():
          
 #validating if the file has the same column
         
-        if any(i for i in colsname if i not in cols):
+        if any(i for i in cols if i not in colsname):
             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
             st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
         elif df['Scores'].isnull().values.any() and  df['Analysis'].isnull().values.any() :
@@ -519,7 +519,7 @@ def wordcloud():
          
 #validating if the file has the same column
         
-        if any(i for i in colsname if i not in cols):
+        if any(i for i in cols if i not in colsname):
              st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
              st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
                 
