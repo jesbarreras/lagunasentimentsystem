@@ -391,7 +391,7 @@ def geographic():
         file.seek(0)
         df = pd.read_csv(file)
 
-        colsname = df.axes[0] #headername/column names
+        colsname = df.axes[1] #headername/column names
          
 #validating if the file has the same column
         
@@ -515,7 +515,7 @@ def wordcloud():
         file.seek(0)
         df = pd.read_csv(file)
 
-        colsname = df.axes[0] #headername/column names
+        colsname = df.axes[1] #headername/column names
          
 #validating if the file has the same column
         
