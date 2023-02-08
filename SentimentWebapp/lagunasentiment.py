@@ -202,7 +202,7 @@ def texttranslate():
 #validating if the file has the same column
         
         if any(i for i in colsname if i not in cols):
-            st.error("Please make it sure your column name in your csv file is the same")
+            st.error("Please make it sure your column name in your csv file is the same format as (Municipalities, Comments, Scores, Analysis, Category)")
             
         else:
             dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)        
@@ -248,8 +248,10 @@ def textanalysis():
 #validating if the file has the same column
         
          if any(i for i in colsname if i not in cols):
-             st.error("Please make it sure your column name in your csv file is the same")
-             
+             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category, Translations)")
+                
+         elif df['Translations'].isnull().values.any():
+              st.error("Please make it sure your csv file is already translated!")
          else:
              dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
          
@@ -303,7 +305,10 @@ def datavisual():
 #validating if the file has the same column
         
          if any(i for i in colsname if i not in cols):
-             st.error("Please make it sure your column name in your csv file is the same")
+             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category, Translations)")
+                
+         elif df['Scores'].isnull().values.any() and  df['Scores'].isnull().values.any() :
+              st.error("Analyze first the csv file!")
                
          else:
              dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
@@ -386,8 +391,11 @@ def geographic():
          
 #validating if the file has the same column
         
-        if all(i for i in colsname if i not in cols):
-            st.error("Please make it sure your column name in your csv file is the same")
+        if any(i for i in colsname if i not in cols):
+             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category, Translations)")
+                
+        elif df['Scores'].isnull().values.any() and  df['Scores'].isnull().values.any() :
+              st.error("Analyze first the csv file!")
         else:
             dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
     
@@ -507,8 +515,11 @@ def wordcloud():
          
 #validating if the file has the same column
         
-        if all(i for i in colsname if i not in cols):
-            st.error("Please make it sure your column name in your csv file is the same")
+        if any(i for i in colsname if i not in cols):
+             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category, Translations)")
+                
+        elif df['Scores'].isnull().values.any() and  df['Scores'].isnull().values.any() :
+              st.error("Analyze first the csv file!")
         else:
           dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
          
