@@ -552,8 +552,8 @@ def wordcloud():
             st.pyplot()
                                         
         
-    except:
-        st.error("Error! Check you file upload!")
+  except:
+      st.error("Error! Check you file upload!")
 #hiding footer
 
 def hidefooter():
