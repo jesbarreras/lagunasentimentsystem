@@ -404,52 +404,50 @@ def geographic():
             dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
     
 
+    try:
+            
 #checking is file not empty before display it
-    if dataframe_append.empty == False:
-        st.write(dataframe_append)
+        if dataframe_append.empty == False:
+            st.write(dataframe_append)
 
         #municipalities
         
 #category options
         
-        category_option  = dataframe_append['Category'].unique().tolist()
-        cate_options = st.selectbox("Category: ", category_option, 0)
+            category_option  = dataframe_append['Category'].unique().tolist()
+            cate_options = st.selectbox("Category: ", category_option, 0)
 
 
-        lagunalocate = pd.read_csv('SentimentWebapp/lagunaloc/lagunamap.csv')
-        lagunalocate = lagunalocate[['name', 'lat', 'long']]
+            lagunalocate = pd.read_csv('SentimentWebapp/lagunaloc/lagunamap.csv')
+            lagunalocate = lagunalocate[['name', 'lat', 'long']]
 
        #tooltip=folium.Tooltip(location_info['name'], permanent=True)
        
 #plotting map
         
-        for index, location_info in lagunalocate.iterrows():
+            for index, location_info in lagunalocate.iterrows():
 
 #filtering to get specific positive negative and neutral count
-            
-            pos = dataframe_append.loc[(dataframe_append['Analysis']== "Positive") & (dataframe_append['Municipalities']==location_info['name']) & (dataframe_append['Category']==cate_options) ]
-            neg = dataframe_append.loc[(dataframe_append['Analysis']== "Negative")  & (dataframe_append['Municipalities']==location_info['name']) & (dataframe_append['Category']==cate_options) ]
-            neu = dataframe_append.loc[(dataframe_append['Analysis']== "Neutral") & (dataframe_append['Municipalities']==location_info['name'])& (dataframe_append['Category']==cate_options)]
+                pos = dataframe_append.loc[(dataframe_append['Analysis']== "Positive") & (dataframe_append['Municipalities']==location_info['name']) & (dataframe_append['Category']==cate_options) ]
+                neg = dataframe_append.loc[(dataframe_append['Analysis']== "Negative")  & (dataframe_append['Municipalities']==location_info['name']) & (dataframe_append['Category']==cate_options) ]
+                neu = dataframe_append.loc[(dataframe_append['Analysis']== "Neutral") & (dataframe_append['Municipalities']==location_info['name'])& (dataframe_append['Category']==cate_options)]
 
  #marking a map
-            
-            if pos['Analysis'].count() > 0 or neg['Analysis'].count() > 0 or  neu['Analysis'].count() > 0:
-                
-                if pos['Analysis'].count() > neg['Analysis'].count() and  pos['Analysis'].count() > neu['Analysis'].count():
-                    iconemote = folium.features.CustomIcon('SentimentWebapp/images/happy.png', icon_size=(45,45))
-                    folium.Marker([location_info['lat'],location_info['long']], tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
+                if pos['Analysis'].count() > 0 or neg['Analysis'].count() > 0 or  neu['Analysis'].count() > 0:
+                    if pos['Analysis'].count() > neg['Analysis'].count() and  pos['Analysis'].count() > neu['Analysis'].count():
+                        iconemote = folium.features.CustomIcon('SentimentWebapp/images/happy.png', icon_size=(45,45))
+                        folium.Marker([location_info['lat'],location_info['long']], tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
         
-                elif neg['Analysis'].count() > pos['Analysis'].count() and  neg['Analysis'].count() > neu['Analysis'].count():
-                    iconemote = folium.features.CustomIcon('SentimentWebapp/images/sad.png', icon_size=(45,45))
-                    folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
+                    elif neg['Analysis'].count() > pos['Analysis'].count() and  neg['Analysis'].count() > neu['Analysis'].count():
+                        iconemote = folium.features.CustomIcon('SentimentWebapp/images/sad.png', icon_size=(45,45))
+                        folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
                 
+                    else:
+                        iconemote = folium.features.CustomIcon('SentimentWebapp/images/neutral.png', icon_size=(45,45))
+                        folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
                 else:
-                    iconemote = folium.features.CustomIcon('SentimentWebapp/images/neutral.png', icon_size=(45,45))
-                    folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
-
-            else:
-                iconemote = folium.features.CustomIcon('SentimentWebapp/images/na.png', icon_size=(45,45))
-                folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']),icon=iconemote).add_to(lagunamap)
+                    iconemote = folium.features.CustomIcon('SentimentWebapp/images/na.png', icon_size=(45,45))
+                    folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']),icon=iconemote).add_to(lagunamap)
 
          #download as png folium map
         #img_data = lagunamap._to_png(2)
@@ -478,19 +476,19 @@ def geographic():
     
     
     #folium.GeoJson(data=gdf["geometry"]).add_to(lagunamap)
-                
-
-    st_folium(lagunamap, width = 1500, height= 800)
+        st_folium(lagunamap, width = 1500, height= 800)
 
   
 
     #legend
 
-    st.write("Legend:")
-    legend = Image.open("SentimentWebapp/images/legend.png")
-    legendresize = legend.resize((375,275))
-    st.image(legendresize)
+        st.write("Legend:")
+        legend = Image.open("SentimentWebapp/images/legend.png")
+        legendresize = legend.resize((375,275))
+        st.image(legendresize)
 
+    except:
+        st.error("Invalid csv file!")
 
 #wordcloud
 
