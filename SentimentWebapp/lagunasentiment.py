@@ -495,37 +495,37 @@ def geographic():
 #wordcloud
 
 def wordcloud():
-    try:
-        #stopwords
-        adv.stopwords.keys()
+    #stopwords
+    adv.stopwords.keys()
     
-        stopwords = set(adv.stopwords['tagalog'])
+    stopwords = set(adv.stopwords['tagalog'])
     #wordlocud pic
     
-        maskpic = np.array(Image.open('images/thumbs.png'))
+    maskpic = np.array(Image.open('images/thumbs.png'))
 
 
-        cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
+    cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
 
-        st.title(f"Word Cloud")
-        dataframe_append = pd.DataFrame()    
-        multiple_files = st.file_uploader('Upload CSV',type="csv", accept_multiple_files=True)
-        for file in multiple_files:
-            file.seek(0)
-            df = pd.read_csv(file)
+    st.title(f"Word Cloud")
+    dataframe_append = pd.DataFrame()    
+    multiple_files = st.file_uploader('Upload CSV',type="csv", accept_multiple_files=True)
+    for file in multiple_files:
+        file.seek(0)
+        df = pd.read_csv(file)
 
-            colsname = df.axes[0] #headername/column names
+        colsname = df.axes[0] #headername/column names
          
 #validating if the file has the same column
         
-            if all(i for i in colsname if i not in cols):
-                st.error("Please make it sure your column name in your csv file is the same")
-            else:
-                dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
+        if all(i for i in colsname if i not in cols):
+            st.error("Please make it sure your column name in your csv file is the same")
+        else:
+            dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
          
     
 
 #checking is file not empty before display it
+    try:
 
 
         if dataframe_append.empty == False:
@@ -553,7 +553,6 @@ def wordcloud():
         
     except:
         st.error("Error! Check you file upload!")
-    
     
 #hiding footer
 
