@@ -188,8 +188,6 @@ def analyze(x):
 
 def texttranslate():
    try:
-        st.title(f"Tagalog to English Translator")
-    
         translator = Translator()
         dataframe_append = pd.DataFrame()
         cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category'}
@@ -220,17 +218,13 @@ def texttranslate():
             def convert_df(dataframe_append):
             #IMPORTANT: Cache the conversion to prevent computation on every rerun
                 return dataframe_append.to_csv(index=False).encode('utf-8')
-            csv = convert_df(dataframe_append)
-            st.download_button(
-                label="Download data as CSV",
-                data=csv,
-                file_name='translated.csv',
-                mime='text/csv',
-              )         
-                            
-
-    except:
-        st.error("Invalid Csv file")
+           csv = convert_df(dataframe_append)
+           st.download_button(
+               label="Download data as CSV",
+               data=csv,
+               file_name='translated.csv',
+               mime='text/csv',
+              )      
                             
        
 #text analyzer
