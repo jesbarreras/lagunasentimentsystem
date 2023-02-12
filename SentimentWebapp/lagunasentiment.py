@@ -226,7 +226,7 @@ def texttranslate():
                 mime='text/csv',
               )                                     
         
-    except:
+   except:
         st.error("Error! Check you file upload!")        
        
 #text analyzer
