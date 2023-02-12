@@ -187,46 +187,50 @@ def analyze(x):
 #text translator
 
 def texttranslate():
-    st.title(f"Tagalog to English Translator")
+   try:
+        st.title(f"Tagalog to English Translator")
     
-    translator = Translator()
-    dataframe_append = pd.DataFrame()
-    cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category'}
-    multiple_files = st.file_uploader('Translate CSV',type="csv", accept_multiple_files=True)
-    for file in multiple_files:
-        file.seek(0)
-        df = pd.read_csv(file)
+        translator = Translator()
+        dataframe_append = pd.DataFrame()
+        cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category'}
+        multiple_files = st.file_uploader('Translate CSV',type="csv", accept_multiple_files=True)
+        for file in multiple_files:
+            file.seek(0)
+            df = pd.read_csv(file)
 
-        colsname = df.axes[1] #headername/column names
+            colsname = df.axes[1] #headername/column names
 
 #validating if the file has the same column
         
-        if any(i for i in colsname if i not in cols):
-            st.error("Please make it sure your column name in your csv file is the same format as (Municipalities, Comments, Scores, Analysis, Category)")
+            if any(i for i in colsname if i not in cols):
+                st.error("Please make it sure your column name in your csv file is the same format as (Municipalities, Comments, Scores, Analysis, Category)")
             
-        else:
-            dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)        
-            dataframe_append['Translations'] = dataframe_append['Comments'].apply(translator.translate, src='tl', dest='en').apply(getattr, args=('text',)) 
+            else:
+                dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)        
+                dataframe_append['Translations'] = dataframe_append['Comments'].apply(translator.translate, src='tl', dest='en').apply(getattr, args=('text',)) 
         
        
 
 #checking is file not empty before display it
-        
-    if dataframe_append.empty == False:
-        st.write(dataframe_append)
+        if dataframe_append.empty == False:
+            st.write(dataframe_append)
 
-        @st.cache
+            @st.cache
     #raw_data = pd.concat(df)
-        def convert_df(dataframe_append):
+           def convert_df(dataframe_append):
             #IMPORTANT: Cache the conversion to prevent computation on every rerun
-            return dataframe_append.to_csv(index=False).encode('utf-8')
-        csv = convert_df(dataframe_append)
-        st.download_button(
-            label="Download data as CSV",
-            data=csv,
-            file_name='translated.csv',
-            mime='text/csv',
-            )         
+               return dataframe_append.to_csv(index=False).encode('utf-8')
+           csv = convert_df(dataframe_append)
+           st.download_button(
+               label="Download data as CSV",
+               data=csv,
+               file_name='translated.csv',
+               mime='text/csv',
+              )         
+                            
+
+    except:
+        st.error("Invalid Csv file")
                             
        
 #text analyzer
