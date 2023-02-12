@@ -501,7 +501,7 @@ def wordcloud():
     stopwords = set(adv.stopwords['tagalog'])
     #wordlocud pic
     
-    maskpic = np.array(Image.open('images/thumbs.png'))
+    maskpic = np.array(Image.open('SentimentWebapp/images/thumbs.png'))
 
 
     cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
