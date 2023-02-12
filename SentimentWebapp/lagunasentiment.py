@@ -229,8 +229,8 @@ def texttranslate():
               )         
                             
 
-     except:
-         st.error("Invalid Csv file")
+    except:
+        st.error("Invalid Csv file")
                             
        
 #text analyzer
