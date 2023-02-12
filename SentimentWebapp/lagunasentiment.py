@@ -217,15 +217,15 @@ def texttranslate():
 
             @st.cache
     #raw_data = pd.concat(df)
-           def convert_df(dataframe_append):
+            def convert_df(dataframe_append):
             #IMPORTANT: Cache the conversion to prevent computation on every rerun
-               return dataframe_append.to_csv(index=False).encode('utf-8')
-           csv = convert_df(dataframe_append)
-           st.download_button(
-               label="Download data as CSV",
-               data=csv,
-               file_name='translated.csv',
-               mime='text/csv',
+                return dataframe_append.to_csv(index=False).encode('utf-8')
+            csv = convert_df(dataframe_append)
+            st.download_button(
+                label="Download data as CSV",
+                data=csv,
+                file_name='translated.csv',
+                mime='text/csv',
               )         
                             
 
