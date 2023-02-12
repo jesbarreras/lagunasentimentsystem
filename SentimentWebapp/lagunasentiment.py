@@ -495,67 +495,65 @@ def geographic():
 #wordcloud
 
 def wordcloud():
-    #stopwords
-
-    adv.stopwords.keys()
+       try:
+        
+        #stopwords
+        adv.stopwords.keys()
     
-    stopwords = set(adv.stopwords['tagalog'])
+        stopwords = set(adv.stopwords['tagalog'])
     #wordlocud pic
     
-    maskpic = np.array(Image.open('SentimentWebapp/images/thumbs.png'))
+        maskpic = np.array(Image.open('images/thumbs.png'))
 
 
-    cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
+        cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
 
-    st.title(f"Word Cloud")
-    dataframe_append = pd.DataFrame()    
-    multiple_files = st.file_uploader('Upload CSV',type="csv", accept_multiple_files=True)
-    for file in multiple_files:
-        
-        file.seek(0)
-        df = pd.read_csv(file)
+        st.title(f"Word Cloud")
+        dataframe_append = pd.DataFrame()    
+        multiple_files = st.file_uploader('Upload CSV',type="csv", accept_multiple_files=True)
+        for file in multiple_files:
+            file.seek(0)
+            df = pd.read_csv(file)
 
-        colsname = df.axes[1] #headername/column names
+            colsname = df.axes[0] #headername/column names
          
 #validating if the file has the same column
         
-        if any(i for i in cols if i not in colsname):
-             st.error("Please make it sure your column name in your csv file is the same format (Municipalities, Comments, Scores, Analysis, Category)")
-             st.warning("Take note@ the Column Name Translations is automatic added when the csv file is already translated via our system function translator")
-                
-        elif df['Scores'].isnull().values.any() and  df['Analysis'].isnull().values.any() :
-              st.error("Analyze first the csv file!")
-        else:
-          dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
+            if all(i for i in colsname if i not in cols):
+                st.error("Please make it sure your column name in your csv file is the same")
+            else:
+                dataframe_append = pd.concat([dataframe_append, df], ignore_index=True)
          
     
 
 #checking is file not empty before display it
 
 
-    if dataframe_append.empty == False:
+        if dataframe_append.empty == False:
 
 
 #options positive negative neutral
-        category_option  = dataframe_append['Analysis'].unique().tolist()
-        cate_options = st.selectbox("Category: ", category_option, 0)
+            category_option  = dataframe_append['Analysis'].unique().tolist()
+            cate_options = st.selectbox("Category: ", category_option, 0)
         
-        words = dataframe_append.loc[(dataframe_append['Analysis'])==cate_options]
+            words = dataframe_append.loc[(dataframe_append['Analysis'])==cate_options]
         
             
 
 #displaying those comment into wordcloud
-        st.set_option('deprecation.showPyplotGlobalUse', False)
-        wordcloud_text = WordCloud(stopwords = stopwords, max_words=6000, contour_color='steelblue', random_state=1, width=900, height=600, collocations=False,mask=maskpic, background_color="black")
-        wordcloud_text.generate(''.join(str(words['Comments'].values)))
-        plt.figure(figsize=(20,10),facecolor='k')
-        plt.imshow(wordcloud_text,interpolation='bilinear')
-        plt.axis('off')
-        plt.tight_layout (pad=0)
-        #plt.savefig("cloud.png", format="png")
-        st.pyplot()
-
-
+            st.set_option('deprecation.showPyplotGlobalUse', False)
+            wordcloud_text = WordCloud(stopwords = stopwords, max_words=6000, contour_color='steelblue', random_state=1, width=900, height=600, collocations=False,mask=maskpic, background_color="black")
+            wordcloud_text.generate(''.join(str(words['Comments'].values)))
+            plt.figure(figsize=(20,10),facecolor='k')
+            plt.imshow(wordcloud_text,interpolation='bilinear')
+            plt.axis('off')
+            plt.tight_layout (pad=0)
+            #plt.savefig("cloud.png", format="png")
+            st.pyplot()
+                                        
+        
+    except:
+        st.error("Error! Check you file upload!")
 #hiding footer
 
 def hidefooter():
