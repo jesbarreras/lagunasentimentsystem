@@ -227,8 +227,6 @@ def texttranslate():
                 return dataframe_append.to_csv(index=False).encode('utf-8')
             csv = convert_df(dataframe_append)
             st.markdown("<p style ='text-align: justify; font-size: 14px'>Don't forget to download the translated csv file!.</p>", unsafe_allow_html=True)
-            st.text()
-            st.text()
             st.download_button(
                 label="Download data as CSV",
                 data=csv,
@@ -288,9 +286,7 @@ def textanalysis():
 
          #download the data
             csv = convert_df(dataframe_append)
-            st.markdown("<p style ='text-align: justify; font-size: 14px'>Please don't to forget to download the analyzed csv file!.</p>", unsafe_allow_html=True)
-            st.text()
-            st.text()
+            st.markdown("<p style ='text-align: justify; font-size: 14px'>Please don't forget to download the analyzed csv file!.</p>", unsafe_allow_html=True)
             st.download_button(
                 label="Download data as CSV",
                 data=csv,
