@@ -188,9 +188,11 @@ def analyze(x):
 
 def texttranslate():
     
+   st.markdown("<p style ='text-align: justify; font-size: 22px'>Note:</p>", unsafe_allow_html=True)
    st.markdown("<p style ='text-align: justify; font-size: 14px'>To translate, the data should be inside an excel file that is saved as CSV UTF-8(Comma Delimited). </p>", unsafe_allow_html=True)
    st.markdown("<p style ='text-align: justify; font-size: 14px'>Please make sure that the column name in your csv file is in this format Municipalities, Comments, Scores, Analysis, Category.</p>", unsafe_allow_html=True)
    st.markdown("<p style ='text-align: justify; font-size: 14px'>Download the file after the translation.</p>", unsafe_allow_html=True)
+   st.text()
    st.title("Tagalog-English Translator")
     
    try:
@@ -244,7 +246,7 @@ def textanalysis():
     
     st.markdown("<p style ='text-align: justify; font-size: 14px'>Import the file that is downloaded from the translation.</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: justify; font-size: 14px'>Afterwards, download the analyzed file so it can be used for Data Visualization,Laguna Geo-Graphic Visualization and Word Cloud..</p>", unsafe_allow_html=True)
-    
+    st.text()
     
     
     try:
@@ -307,7 +309,9 @@ def textanalysis():
 #data representation
          
 def datavisual():
-    
+     st.markdown("<p style ='text-align: justify; font-size: 22px'>Note:</p>", unsafe_allow_html=True)
+     st.markdown("<p style ='text-align: justify; font-size: 14px'>Upload the analyzed csv to visualized the data!</p>", unsafe_allow_html=True)
+     st.text()
      st.title(f"Data Visualization")
      dataframe_append = pd.DataFrame()
      cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
@@ -397,6 +401,10 @@ def geographic():
     
 
 #uploadfile
+
+    st.markdown("<p style ='text-align: justify; font-size: 22px'>Note:</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: justify; font-size: 14px'>Upload the analyzed csv to visualized the data!</p>", unsafe_allow_html=True)
+    st.text()
     st.title(f"Laguna Geo-Graphic Visualization")
     dataframe_append = pd.DataFrame()
     cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
@@ -519,7 +527,10 @@ def wordcloud():
 
 
     cols = {'Municipalities', 'Comments','Scores', 'Analysis', 'Category', 'Translations'}
-
+    
+    st.markdown("<p style ='text-align: justify; font-size: 22px'>Note:</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: justify; font-size: 14px'>Upload the analyzed csv to visualized the data!</p>", unsafe_allow_html=True)
+    st.text()
     st.title(f"Word Cloud")
     dataframe_append = pd.DataFrame()    
     multiple_files = st.file_uploader('Upload CSV',type="csv", accept_multiple_files=True)
