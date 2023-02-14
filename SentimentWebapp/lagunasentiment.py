@@ -242,7 +242,7 @@ def texttranslate():
 #text analyzer
              
 def textanalysis():
-    st.markdown("<p style ='text-align: justify; font-size: 22px'>Note:.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: justify; font-size: 22px'>Note:</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: justify; font-size: 14px'>Import the file that is downloaded from the translation.</p>", unsafe_allow_html=True)
     st.markdown("<p style ='text-align: justify; font-size: 14px'>Afterwards, download the analyzed file so it can be used for Data Visualization,Laguna Geo-Graphic Visualization and Word Cloud..</p>", unsafe_allow_html=True)
     
