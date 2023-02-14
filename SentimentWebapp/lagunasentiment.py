@@ -279,8 +279,6 @@ def textanalysis():
 
             @st.cache
         #coverting the data
-        
-            st.markdown("<p style ='text-align: justify; font-size: 22px'>Please don't to forget to download the analyzed csv file!.</p>", unsafe_allow_html=True) 
             def convert_df(dataframe_append):
              #IMPORTANT: Cache the conversion to prevent computation on every rerun
                 return dataframe_append.to_csv(index=False).encode('utf-8')
