@@ -29,6 +29,8 @@ st.set_page_config(layout="wide") #widelayout
 #main menu
 
 def main():
+    
+    hidefooter()
     with st.sidebar:
         selected = option_menu(
             menu_title = "Main Menu",
@@ -150,7 +152,7 @@ def analysis():
 
     try:
         
-        hidefooter()
+        
         st.markdown("<p style ='text-align: justify; font-size: 22px'>Upload a csv file with a column name Municipalities, Comments, Scores, Analysis and Category</p>", unsafe_allow_html=True)
 
         st.text("")
