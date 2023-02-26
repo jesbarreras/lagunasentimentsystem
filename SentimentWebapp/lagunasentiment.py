@@ -92,10 +92,10 @@ def homepage():
     col5, col6 = st.columns(2)
     with col5:
          st.markdown("<p style ='text-align: justify; font-size: 23px'>Sentiment Analysis</p>", unsafe_allow_html=True)
-         st.markdown("<p style ='text-align: justify; font-size: 10px'>Sentiment analysis (or opinion mining) is a natural language processing (NLP) technique used to determine whether data is positive, negative or neutral.</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 20px'>Sentiment analysis (or opinion mining) is a natural language processing (NLP) technique used to determine whether data is positive, negative or neutral.</p>", unsafe_allow_html=True)
     with col6:
         senti = Image.open("SentimentWebapp/images/sentiment.jpg")
-        resize = senti.resize((500,400))
+        resize = senti.resize((600,430))
         st.image(resize)
         
     #datavisual short description    
@@ -111,7 +111,7 @@ def homepage():
      
     with col8:
         dataimage = Image.open("SentimentWebapp/images/datavisual.png")
-        resize = dataimage.resize((500,400))
+        resize = dataimage.resize((600,430))
         st.image(resize)
        
         
@@ -127,7 +127,7 @@ def homepage():
          st.markdown("<p style ='text-align: justify; font-size: 20px'>concerns the visual representations of geospatial data and the use of cartographic techniques to support visual analytics.</p>", unsafe_allow_html=True)
     with col10:
         geo = Image.open("SentimentWebapp/images/geovisual.png")
-        geologo = geo.resize((500,400))
+        geologo = geo.resize((600,430))
         st.image(geologo)
         
       #wordcloud short description    
@@ -142,7 +142,7 @@ def homepage():
          st.markdown("<p style ='text-align: justify; font-size: 20px'>It helps to get an idea about your text data, especially when working on problems based on natural language processing.</p>", unsafe_allow_html=True)
     with col12:
         wordpic = Image.open("SentimentWebapp/images/wordcloud.png")
-        cloudpic = wordpic.resize((500,400))
+        cloudpic = wordpic.resize((600,430))
         st.image(cloudpic)
                
         
@@ -153,7 +153,7 @@ def analysis():
     try:
         
         
-        st.markdown("<p style ='text-align: justify; font-size: 22px'>Upload a csv file with a column name Municipalities, Comments, Scores, Analysis and Category</p>", unsafe_allow_html=True)
+        st.markdown("<p style ='text-align: justify; font-size: 22px'>Note: Upload a csv file with a column name Municipalities, Comments, Scores, Analysis and Category</p>", unsafe_allow_html=True)
 
         st.text("")
         st.title(f"Sentiment Analysis")
