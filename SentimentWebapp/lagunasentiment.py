@@ -73,9 +73,9 @@ def homepage():
     st.text("")
     st.text("")
 #centering text
-    st.markdown("<p style ='text-align: center; font-size: 22px'>This web application is a sentiment analysis tool that is used to detect and understand the feelings of their citizen from different municipalities of Laguna.</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; font-size: 22px'>It can generate insights so the LGU (Local Government Units) can improve the experiences and services for their citizens..</p>", unsafe_allow_html=True)
-    st.markdown("<p style ='text-align: center; font-size: 22px'>The web application includes functionalities such as Sentiment Analysis, Data Visualization, Geo-Graphic Visualization and Word Cloud for converting a large amount of data into an easy to understand visible information ..</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 25px'>This web application is a sentiment analysis tool that is used to detect and understand the feelings of their citizen from different municipalities of Laguna.</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 25px'>It can generate insights so the LGU (Local Government Units) can improve the experiences and services for their citizens..</p>", unsafe_allow_html=True)
+    st.markdown("<p style ='text-align: center; font-size: 25px'>The web application includes functionalities such as Sentiment Analysis, Data Visualization, Geo-Graphic Visualization and Word Cloud for converting a large amount of data into an easy to understand visible information ..</p>", unsafe_allow_html=True)
     
     #sentiment analysis short description
     
@@ -91,11 +91,11 @@ def homepage():
     
     col5, col6 = st.columns(2)
     with col5:
-         st.markdown("<p style ='text-align: justify; font-size: 22px'>Sentiment Analysis</p>", unsafe_allow_html=True)
-         st.markdown("<p style ='text-align: justify; font-size: 16px'>Sentiment analysis (or opinion mining) is a natural language processing (NLP) technique used to determine whether data is positive, negative or neutral.</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 23px'>Sentiment Analysis</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 10px'>Sentiment analysis (or opinion mining) is a natural language processing (NLP) technique used to determine whether data is positive, negative or neutral.</p>", unsafe_allow_html=True)
     with col6:
         senti = Image.open("SentimentWebapp/images/sentiment.jpg")
-        resize = senti.resize((375,375))
+        resize = senti.resize((500,400))
         st.image(resize)
         
     #datavisual short description    
@@ -105,13 +105,13 @@ def homepage():
     
     col7, col8 = st.columns(2)
     with col7:
-         st.markdown("<p style ='text-align: justify; font-size: 22px'>Data Visualization</p>", unsafe_allow_html=True)
-         st.markdown("<p style ='text-align: justify; font-size: 16px'>Data visualization is the graphical representation of different pieces of information or data, using visual elements such as charts, graphs, or maps.</p>", unsafe_allow_html=True) 
-         st.markdown("<p style ='text-align: justify; font-size: 16px'>Data visualization tools provide the ability to see and understand data trends, outliers, and patterns in an easy, intuitive way.</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 23px'>Data Visualization</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 20px'>Data visualization is the graphical representation of different pieces of information or data, using visual elements such as charts, graphs, or maps.</p>", unsafe_allow_html=True) 
+         st.markdown("<p style ='text-align: justify; font-size: 20px'>Data visualization tools provide the ability to see and understand data trends, outliers, and patterns in an easy, intuitive way.</p>", unsafe_allow_html=True)
      
     with col8:
         dataimage = Image.open("SentimentWebapp/images/datavisual.png")
-        resize = dataimage.resize((375,375))
+        resize = dataimage.resize((500,400))
         st.image(resize)
        
         
@@ -122,12 +122,12 @@ def homepage():
     
     col9, col10 = st.columns(2)
     with col9:
-         st.markdown("<p style ='text-align: justify; font-size: 22px'>Geovisualization or “Geographic Visualization”</p>", unsafe_allow_html=True)
-         st.markdown("<p style ='text-align: justify; font-size: 16px'>Geovisualization or “Geographic Visualization”</p>", unsafe_allow_html=True)
-         st.markdown("<p style ='text-align: justify; font-size: 16px'>concerns the visual representations of geospatial data and the use of cartographic techniques to support visual analytics.</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 23px'>Geovisualization or “Geographic Visualization”</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 20px'>Geovisualization or “Geographic Visualization”</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 20px'>concerns the visual representations of geospatial data and the use of cartographic techniques to support visual analytics.</p>", unsafe_allow_html=True)
     with col10:
         geo = Image.open("SentimentWebapp/images/geovisual.png")
-        geologo = geo.resize((375,375))
+        geologo = geo.resize((500,400))
         st.image(geologo)
         
       #wordcloud short description    
@@ -137,12 +137,12 @@ def homepage():
     
     col11, col12 = st.columns(2)
     with col11:
-         st.markdown("<p style ='text-align: justify; font-size: 22px'>“WordCloud”</p>", unsafe_allow_html=True)
-         st.markdown("<p style ='text-align: justify; font-size: 16px'>A word cloud is a data visualization technique that shows the most used words in large font and the least used words in small font.</p>", unsafe_allow_html=True)
-         st.markdown("<p style ='text-align: justify; font-size: 16px'>It helps to get an idea about your text data, especially when working on problems based on natural language processing.</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 23px'>“WordCloud”</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 20px'>A word cloud is a data visualization technique that shows the most used words in large font and the least used words in small font.</p>", unsafe_allow_html=True)
+         st.markdown("<p style ='text-align: justify; font-size: 20px'>It helps to get an idea about your text data, especially when working on problems based on natural language processing.</p>", unsafe_allow_html=True)
     with col12:
         wordpic = Image.open("SentimentWebapp/images/wordcloud.png")
-        cloudpic = wordpic.resize((375,375))
+        cloudpic = wordpic.resize((500,400))
         st.image(cloudpic)
                
         
