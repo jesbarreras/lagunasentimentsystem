@@ -285,18 +285,18 @@ def analysis():
             for index, location_info in lagunalocate.iterrows():                    
 
 #filtering to get specific positive negative and neutral count
-                pos = dataframe_append.loc[(dataframe_append['Analysis']== "Positive") & (dataframe_append['Municipalities']==location_info['name']) & (dataframe_append['Category']==cate_options1) ]
-                neg = dataframe_append.loc[(dataframe_append['Analysis']== "Negative")  & (dataframe_append['Municipalities']==location_info['name']) & (dataframe_append['Category']==cate_options1) ]
-                neu = dataframe_append.loc[(dataframe_append['Analysis']== "Neutral") & (dataframe_append['Municipalities']==location_info['name'])& (dataframe_append['Category']==cate_options1)]
+                pos1 = dataframe_append.loc[(dataframe_append['Analysis']== "Positive") & (dataframe_append['Municipalities']==location_info['name']) & (dataframe_append['Category']==cate_options1) ]
+                neg1 = dataframe_append.loc[(dataframe_append['Analysis']== "Negative")  & (dataframe_append['Municipalities']==location_info['name']) & (dataframe_append['Category']==cate_options1) ]
+                neu1 = dataframe_append.loc[(dataframe_append['Analysis']== "Neutral") & (dataframe_append['Municipalities']==location_info['name'])& (dataframe_append['Category']==cate_options1)]
 
  #marking a map
             
-                if pos['Analysis'].count() > 0 or neg['Analysis'].count() > 0 or  neu['Analysis'].count() > 0:
-                    if pos['Analysis'].count() > neg['Analysis'].count() and  pos['Analysis'].count() > neu['Analysis'].count():
+                if pos1['Analysis'].count() > 0 or neg1['Analysis'].count() > 0 or  neu1['Analysis'].count() > 0:
+                    if pos1['Analysis'].count() > neg1['Analysis'].count() and  pos1['Analysis'].count() > neu1['Analysis'].count():
                         iconemote = folium.features.CustomIcon('SentimentWebapp/images/happy.png', icon_size=(45,45))
                         folium.Marker([location_info['lat'],location_info['long']], tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
         
-                    elif neg['Analysis'].count() > pos['Analysis'].count() and  neg['Analysis'].count() > neu['Analysis'].count():
+                    elif neg1['Analysis'].count() > pos1['Analysis'].count() and  neg1['Analysis'].count() > neu1['Analysis'].count():
                         iconemote = folium.features.CustomIcon('SentimentWebapp/images/sad.png', icon_size=(45,45))
                         folium.Marker([location_info['lat'],location_info['long']] ,tooltip=folium.Tooltip(location_info['name']), icon=iconemote).add_to(lagunamap)
                 
